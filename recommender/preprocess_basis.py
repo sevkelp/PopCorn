@@ -43,8 +43,6 @@ def create_basic_tables(movies_path,ratings_path,tags_path):
     tags_enhanced = tags.copy()
     tags_enhanced['tag_clean'] = tags_enhanced['tag'].apply(clean_text)
 
-    from sklearn.feature_extraction.text import CountVectorizer
-
     vect = CountVectorizer()
     tags_temp = pd.DataFrame(vect.fit_transform(tags_enhanced['tag_clean']).toarray(),columns=vect.get_feature_names_out())
 
